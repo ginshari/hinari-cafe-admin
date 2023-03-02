@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>Hinari's Cafe 管理ツール | TOP</title>
+</head>
+<body>
+<h1>maintenance</h1>
+<ul class="list-unstyled">
+    <ul>
+        <li><a href="./landing/index.html" th:href="@{/landing}">landing</a></li>
+        <li><a href="./coffees/index.html" th:href="@{/coffees}">coffees</a></li>
+        <li><a href="./works/index.html" th:href="@{/works}">works</a></li>
+    </ul>
+</ul>
+</body>
+</html>
