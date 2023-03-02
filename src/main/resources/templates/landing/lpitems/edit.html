@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>Hinari's Cafe 管理ツール | lpitems edit</title>
+</head>
+<body>
+<h1>/lpitem</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./index.html" th:href="@{/}">home</a></li>
+        <li class="breadcrumb-item"><a href="./landing/index.html" th:href="@{/landing}">landing</a></li>
+        <li class="breadcrumb-item active" aria-current="page">lpitem</li>
+    </ol>
+</nav>
+<form action="#" th:action="@{/landing/lpitems}" th:method="post" th:object="${lpitem}">
+    <input type="hidden" id="id" th:field="*{id}">
+    <div class="mb-3">
+        <label for="category" class="form-label">category</label>
+        <select id="category" class="form-select" aria-label="category" th:field="*{category}">
+            <option value="works" th:selected="${lpitem.category == 'works'}">works</option>
+            <option value="recommends" th:selected="${lpitem.category == 'recommends'}">recommends</option>
+            <option value="coffees" th:selected="${lpitem.category == 'coffees'}">coffees</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="order" class="form-label">order</label>
+        <input type="text" id="order" class="form-control" th:field="*{order}">
+    </div>
+    <div class="mb-3">
+        <label for="url" class="form-label">url</label>
+        <input type="text" id="url" class="form-control" th:field="*{url}">
+    </div>
+    <div class="mb-3">
+        <label for="imgUrl" class="form-label">imgUrl</label>
+        <input type="text" id="imgUrl" class="form-control" th:field="*{imgUrl}">
+    </div>
+    <div class="mb-3">
+        <label for="head" class="form-label">head</label>
+        <input type="text" id="head" class="form-control" th:field="*{head}">
+    </div>
+    <div class="mb-3">
+        <label for="body" class="form-label">body</label>
+        <input type="text" id="body" class="form-control" th:field="*{body}">
+    </div>
+    <div class="d-flex justify-content-end my-2">
+        <button type="submit" class="btn btn-primary">
+            UPDATE
+        </button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+<head>
+    <title>Hinari's Cafe 管理ツール | events edit</title>
+</head>
+<body>
+<h1>/works</h1>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./index.html" th:href="@{/}">home</a></li>
+        <li class="breadcrumb-item"><a href="./works/index.html" th:href="@{/works}">works</a></li>
+        <li class="breadcrumb-item active" aria-current="page">event</li>
+    </ol>
+</nav>
+<form action="#" th:action="@{/works/events}" th:method="post" th:object="${event}">
+    <input type="hidden" id="id" th:field="*{id}">
+    <div class="mb-3">
+        <label for="yyyymm" class="form-label">yyyymm</label>
+        <input type="text" id="yyyymm" class="form-control" th:field="*{yyyymm}">
+    </div>
+    <div class="mb-3">
+        <label for="branchNumber" class="form-label">branchNumber</label>
+        <input type="text" id="branchNumber" class="form-control" th:field="*{branchNumber}">
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">category</label>
+        <select id="category" class="form-select" aria-label="category" th:field="*{category}">
+            <option value="works" th:selected="${event.category == 'works'}">works</option>
+            <option value="topics" th:selected="${event.category == 'topics'}">topics</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">name</label>
+        <input type="text" id="name" class="form-control" th:field="*{name}">
+    </div>
+    <div class="mb-3">
+        <label for="url" class="form-label">url</label>
+        <input type="text" id="url" class="form-control" th:field="*{url}">
+    </div>
+    <div class="d-flex justify-content-end my-2">
+        <button type="submit" class="btn btn-primary">
+            UPDATE
+        </button>
+    </div>
+</form>
+</body>
+</html>
