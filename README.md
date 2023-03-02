@@ -4,7 +4,7 @@ hinari-cafe-nuxt3の管理画面です
 ## Architecture
 
 | Main Framework | UI Framework | DataBase |
-| --- | --- | --- | ---|
+| --- | --- | --- |
 | SpringBoot3 | Bootstrap5 | MongoDB Atlas |
 
 ## Setup
