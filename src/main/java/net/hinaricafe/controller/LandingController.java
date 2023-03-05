@@ -30,7 +30,7 @@ public class LandingController {
     @GetMapping("/{objectId}")
     public String showLandingEdit(@PathVariable("objectId") String objectId, Model model) {
         model.addAttribute("landing", landingService.getLandingPage());
-        return "/landing/edit";
+        return "landing/edit";
     }
 
     @PostMapping("")
@@ -42,7 +42,7 @@ public class LandingController {
     @GetMapping("/lpitems/{objectId}")
     public String showLpItemsEdit(@PathVariable("objectId") String objectId, Model model) {
         model.addAttribute("lpitem", landingService.getLpItem(objectId));
-        return "/landing/lpitems/edit";
+        return "landing/lpitems/edit";
     }
 
     @PostMapping("/lpitems")
