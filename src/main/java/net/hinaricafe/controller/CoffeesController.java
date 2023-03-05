@@ -25,7 +25,7 @@ public class CoffeesController {
     @GetMapping("/coffees/{objectId}")
     public String showCoffeesEdit(@PathVariable("objectId") String objectId, Model model) {
         model.addAttribute("coffee", coffeesService.getCoffee(objectId));
-        return "/coffees/coffees/edit";
+        return "coffees/coffees/edit";
     }
 
     @PostMapping("/coffees")

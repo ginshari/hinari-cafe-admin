@@ -29,7 +29,7 @@ public class WorksController {
     @GetMapping("/links/{objectId}")
     public String showLinksEdit(@PathVariable("objectId") String objectId, Model model) {
         model.addAttribute("link", worksService.getLink(objectId));
-        return "/works/links/edit";
+        return "works/links/edit";
     }
 
     @PostMapping("/links")
@@ -46,7 +46,7 @@ public class WorksController {
     @GetMapping("/profiles/{objectId}")
     public String showProfilesEdit(@PathVariable("objectId") String objectId, Model model) {
         model.addAttribute("profile", worksService.getProfile(objectId));
-        return "/works/profiles/edit";
+        return "works/profiles/edit";
     }
 
     @PostMapping("/profiles")
@@ -63,7 +63,7 @@ public class WorksController {
     @GetMapping("/events/{objectId}")
     public String showEventsEdit(@PathVariable("objectId") String objectId, Model model) {
         model.addAttribute("event", worksService.getEvent(objectId));
-        return "/works/events/edit";
+        return "works/events/edit";
     }
 
     @PostMapping("/events")
