@@ -10,7 +10,7 @@
     </parent>
     <groupId>net</groupId>
     <artifactId>hinaricafe</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>admin</name>
     <description>Application for admin of hinaricafe.net</description>
     <properties>
