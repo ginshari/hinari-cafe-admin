@@ -1,172 +1,175 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::content})}">
 <head>
     <title>Hinari's Cafe 管理ツール | LANDING</title>
 </head>
 <body>
-<h1>/landing</h1>
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="./index.html" th:href="@{/}">home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">landing</li>
-    </ol>
-</nav>
-<div class="mb-3">
-    <label for="greeting" class="form-label">greeting</label>
-    <textarea id="greeting" class="form-control" th:text="${greeting}" rows="5" readonly></textarea>
-</div>
-<div class="mb-3">
-    <label for="annotation" class="form-label">annotation</label>
-    <textarea id="annotation" class="form-control" th:text="${annotation}" rows="5" readonly></textarea>
-</div>
-<div class="d-flex justify-content-end">
-    <a href="./landing/edit.html"
-       th:href="@{/landing/{objectId}(objectId=${id})}">
-        <button class="btn btn-secondary" type="button">
-            EDIT
-        </button>
-    </a>
-</div>
-<div class="my-5">
-    <h2>works</h2>
-    <div class="accordion" id="accordionWorks">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingWorks">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseWorks" aria-expanded="true" aria-controls="collapseWorks">
-                    TABLE
-                </button>
-            </h2>
-            <div id="collapseWorks" class="accordion-collapse collapse" aria-labelledby="headingWorks"
-                 data-bs-parent="#accordionWorks">
-                <div class="accordion-body">
-                    <div class="d-flex justify-content-start my-2 ">
-                        <a href="./landing/lpitems/edit.html" th:href="@{/landing/lpitems/edit}">
-                            <button class="btn btn-primary" type="button">ADD</button>
-                        </a>
+<div th:fragment="content">
+    <h1>/landing</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./index.html" th:href="@{/}">home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">landing</li>
+        </ol>
+    </nav>
+    <div class="mb-3">
+        <label for="greeting" class="form-label">greeting</label>
+        <textarea id="greeting" class="form-control" th:text="${greeting}" rows="5" readonly></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="annotation" class="form-label">annotation</label>
+        <textarea id="annotation" class="form-control" th:text="${annotation}" rows="5" readonly></textarea>
+    </div>
+    <div class="d-flex justify-content-end">
+        <a href="./landing/edit.html"
+           th:href="@{/landing/{objectId}(objectId=${id})}">
+            <button class="btn btn-secondary" type="button">
+                EDIT
+            </button>
+        </a>
+    </div>
+    <div class="my-5">
+        <h2>works</h2>
+        <div class="accordion" id="accordionWorks">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingWorks">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseWorks" aria-expanded="true" aria-controls="collapseWorks">
+                        TABLE
+                    </button>
+                </h2>
+                <div id="collapseWorks" class="accordion-collapse collapse" aria-labelledby="headingWorks"
+                     data-bs-parent="#accordionWorks">
+                    <div class="accordion-body">
+                        <div class="d-flex justify-content-start my-2 ">
+                            <a href="./landing/lpitems/edit.html" th:href="@{/landing/lpitems/edit}">
+                                <button class="btn btn-primary" type="button">ADD</button>
+                            </a>
+                        </div>
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                            <tr>
+                                <th scope="col">order</th>
+                                <th scope="col">head</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="work : ${works}">
+                                <td th:text="${work.order}">(order)</td>
+                                <td th:text="${work.head}">(head)</td>
+                                <td>
+                                    <div class="d-flex justify-content-end">
+                                        <a href="./landing/lpitems/edit.html"
+                                           th:href="@{/landing/lpitems/{objectId}(objectId=${work.id})}">
+                                            <button class="btn btn-secondary" type="button">
+                                                EDIT
+                                            </button>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <table class="table table-striped">
-                        <thead class="table-dark">
-                        <tr>
-                            <th scope="col">order</th>
-                            <th scope="col">head</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="work : ${works}">
-                            <td th:text="${work.order}">(order)</td>
-                            <td th:text="${work.head}">(head)</td>
-                            <td>
-                                <div class="d-flex justify-content-end">
-                                    <a href="./landing/lpitems/edit.html"
-                                       th:href="@{/landing/lpitems/{objectId}(objectId=${work.id})}">
-                                        <button class="btn btn-secondary" type="button">
-                                            EDIT
-                                        </button>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="my-5">
-    <h2>recommends</h2>
-    <div class="accordion" id="accordionRecommends">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingRecommends">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseRecommends" aria-expanded="true" aria-controls="collapseRecommends">
-                    TABLE
-                </button>
-            </h2>
-            <div id="collapseRecommends" class="accordion-collapse collapse" aria-labelledby="headingRecommends"
-                 data-bs-parent="#accordionRecommends">
-                <div class="accordion-body">
-                    <div class="d-flex justify-content-start my-2 ">
-                        <a href="./landing/lpitems/edit.html" th:href="@{/landing/lpitems/edit}">
-                            <button class="btn btn-primary" type="button">ADD</button>
-                        </a>
+    <div class="my-5">
+        <h2>recommends</h2>
+        <div class="accordion" id="accordionRecommends">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingRecommends">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseRecommends" aria-expanded="true"
+                            aria-controls="collapseRecommends">
+                        TABLE
+                    </button>
+                </h2>
+                <div id="collapseRecommends" class="accordion-collapse collapse" aria-labelledby="headingRecommends"
+                     data-bs-parent="#accordionRecommends">
+                    <div class="accordion-body">
+                        <div class="d-flex justify-content-start my-2 ">
+                            <a href="./landing/lpitems/edit.html" th:href="@{/landing/lpitems/edit}">
+                                <button class="btn btn-primary" type="button">ADD</button>
+                            </a>
+                        </div>
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                            <tr>
+                                <th scope="col">order</th>
+                                <th scope="col">head</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="recommend : ${recommends}">
+                                <td th:text="${recommend.order}">(order)</td>
+                                <td th:text="${recommend.head}">(head)</td>
+                                <td>
+                                    <div class="d-flex justify-content-end">
+                                        <a href="./landing/lpitems/edit.html"
+                                           th:href="@{/landing/lpitems/{objectId}(objectId=${recommend.id})}">
+                                            <button class="btn btn-secondary" type="button">
+                                                EDIT
+                                            </button>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <table class="table table-striped">
-                        <thead class="table-dark">
-                        <tr>
-                            <th scope="col">order</th>
-                            <th scope="col">head</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="recommend : ${recommends}">
-                            <td th:text="${recommend.order}">(order)</td>
-                            <td th:text="${recommend.head}">(head)</td>
-                            <td>
-                                <div class="d-flex justify-content-end">
-                                    <a href="./landing/lpitems/edit.html"
-                                       th:href="@{/landing/lpitems/{objectId}(objectId=${recommend.id})}">
-                                        <button class="btn btn-secondary" type="button">
-                                            EDIT
-                                        </button>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="my-5">
-    <h2>coffees</h2>
-    <div class="accordion" id="accordionCoffees">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingCoffees">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseCoffees" aria-expanded="true" aria-controls="collapseCoffees">
-                    TABLE
-                </button>
-            </h2>
-            <div id="collapseCoffees" class="accordion-collapse collapse" aria-labelledby="headingCoffees"
-                 data-bs-parent="#accordionCoffees">
-                <div class="accordion-body">
-                    <div class="d-flex justify-content-start my-2 ">
-                        <a href="./landing/lpitems/edit.html" th:href="@{/landing/lpitems/edit}">
-                            <button class="btn btn-primary" type="button">ADD</button>
-                        </a>
+    <div class="my-5">
+        <h2>coffees</h2>
+        <div class="accordion" id="accordionCoffees">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingCoffees">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseCoffees" aria-expanded="true" aria-controls="collapseCoffees">
+                        TABLE
+                    </button>
+                </h2>
+                <div id="collapseCoffees" class="accordion-collapse collapse" aria-labelledby="headingCoffees"
+                     data-bs-parent="#accordionCoffees">
+                    <div class="accordion-body">
+                        <div class="d-flex justify-content-start my-2 ">
+                            <a href="./landing/lpitems/edit.html" th:href="@{/landing/lpitems/edit}">
+                                <button class="btn btn-primary" type="button">ADD</button>
+                            </a>
+                        </div>
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                            <tr>
+                                <th scope="col">order</th>
+                                <th scope="col">head</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="coffee : ${coffees}">
+                                <td th:text="${coffee.order}">(order)</td>
+                                <td th:text="${coffee.head}">(head)</td>
+                                <td>
+                                    <div class="d-flex justify-content-end">
+                                        <a href="./landing/lpitems/edit.html"
+                                           th:href="@{/landing/lpitems/{objectId}(objectId=${coffee.id})}">
+                                            <button class="btn btn-secondary" type="button">
+                                                EDIT
+                                            </button>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <table class="table table-striped">
-                        <thead class="table-dark">
-                        <tr>
-                            <th scope="col">order</th>
-                            <th scope="col">head</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="coffee : ${coffees}">
-                            <td th:text="${coffee.order}">(order)</td>
-                            <td th:text="${coffee.head}">(head)</td>
-                            <td>
-                                <div class="d-flex justify-content-end">
-                                    <a href="./landing/lpitems/edit.html"
-                                       th:href="@{/landing/lpitems/{objectId}(objectId=${coffee.id})}">
-                                        <button class="btn btn-secondary" type="button">
-                                            EDIT
-                                        </button>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>

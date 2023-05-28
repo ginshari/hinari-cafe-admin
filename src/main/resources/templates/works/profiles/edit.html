@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}">
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::content})}">
 <head>
     <title>Hinari's Cafe 管理ツール | profiles edit</title>
 </head>
 <body>
-<h1>/works</h1>
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="./index.html" th:href="@{/}">home</a></li>
-        <li class="breadcrumb-item"><a href="./works/index.html" th:href="@{/works}">works</a></li>
-        <li class="breadcrumb-item active" aria-current="page">profile</li>
-    </ol>
-</nav>
-<form action="#" th:action="@{/works/profiles}" th:method="post" th:object="${profile}">
-    <input type="hidden" id="id" th:field="*{id}">
-    <div class="mb-3">
-        <label for="order" class="form-label">order</label>
-        <input type="text" id="order" class="form-control" th:field="*{order}">
-    </div>
-    <div class="mb-3">
-        <label for="head" class="form-label">head</label>
-        <input type="text" id="head" class="form-control" th:field="*{head}">
-    </div>
-    <div class="mb-3">
-        <label for="body" class="form-label">body</label>
-        <input type="text" id="body" class="form-control" th:field="*{body}">
-    </div>
-    <div class="d-flex justify-content-end my-2">
-        <button type="submit" class="btn btn-primary">
-            UPDATE
-        </button>
-    </div>
-</form>
+<div th:fragment="content">
+    <h1>/works</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./index.html" th:href="@{/}">home</a></li>
+            <li class="breadcrumb-item"><a href="./works/index.html" th:href="@{/works}">works</a></li>
+            <li class="breadcrumb-item active" aria-current="page">profile</li>
+        </ol>
+    </nav>
+    <form action="#" th:action="@{/works/profiles}" th:method="post" th:object="${profile}">
+        <input type="hidden" id="id" th:field="*{id}">
+        <div class="mb-3">
+            <label for="order" class="form-label">order</label>
+            <input type="text" id="order" class="form-control" th:field="*{order}">
+        </div>
+        <div class="mb-3">
+            <label for="head" class="form-label">head</label>
+            <input type="text" id="head" class="form-control" th:field="*{head}">
+        </div>
+        <div class="mb-3">
+            <label for="body" class="form-label">body</label>
+            <input type="text" id="body" class="form-control" th:field="*{body}">
+        </div>
+        <div class="d-flex justify-content-end my-2">
+            <button type="submit" class="btn btn-primary">
+                UPDATE
+            </button>
+        </div>
+    </form>
+</div>
 </body>
 </html>
