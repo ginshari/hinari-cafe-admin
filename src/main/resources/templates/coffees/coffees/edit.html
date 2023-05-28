@@ -41,11 +41,19 @@
         </div>
         <div class="mb-3">
             <label for="orderTime" class="form-label">orderTime</label>
-            <input type="text" id="orderTime" class="form-control" th:field="*{orderTime}">
+            <div class="row">
+                <div class="col"><input type="text" id="orderTimeInput" class="form-control"></div>
+                <div class="col"><input type="text" id="orderTime" class="form-control" th:field="*{orderTime}"
+                                        readonly></div>
+            </div>
         </div>
         <div class="mb-3">
             <label for="reviewTime" class="form-label">reviewTime</label>
-            <input type="text" id="reviewTime" class="form-control" th:field="*{reviewTime}">
+            <div class="row">
+                <div class="col"><input type="text" id="reviewTimeInput" class="form-control"></div>
+                <div class="col"><input type="text" id="reviewTime" class="form-control" th:field="*{reviewTime}"
+                                        readonly></div>
+            </div>
         </div>
         <div class="mb-3">
             <label for="reviewText" class="form-label">reviewText</label>
