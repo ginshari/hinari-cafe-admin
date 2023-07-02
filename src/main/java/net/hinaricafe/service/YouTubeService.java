@@ -29,11 +29,11 @@ public class YouTubeService {
 
         try {
 
-            YouTube.Videos.List videosListApi = myYouTube.videos().list("id,snippet");
+            YouTube.Videos.List videosListApi = myYouTube.videos().list("id,liveStreamingDetails,snippet");
 
             videosListApi.setKey(appConfig.apikey);
             videosListApi.setId(videoId);
-            videosListApi.setFields("items(id,snippet/publishedAt,snippet/title,snippet/thumbnails/medium/url)");
+            videosListApi.setFields("items(id,liveStreamingDetails/actualStartTime,snippet(title,thumbnails/medium/url))");
 
             VideoListResponse videoListResponse = videosListApi.execute();
 
@@ -45,7 +45,7 @@ public class YouTubeService {
                 var myVideo = new MyVideo();
                 myVideo.setVideoId(video.getId());
                 myVideo.setVideoTitle(video.getSnippet().getTitle());
-                myVideo.setPubDate(dateTimeToString(video.getSnippet().getPublishedAt()));
+                myVideo.setPubDate(dateTimeToString(video.getLiveStreamingDetails().getActualStartTime()));
                 myVideo.setImgUrl(video.getSnippet().getThumbnails().getMedium().getUrl());
 
                 return myVideo;
